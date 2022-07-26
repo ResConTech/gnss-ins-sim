@@ -14,6 +14,7 @@ from .sim_data import Sim_data
 from ..attitude import attitude
 from ..kml_gen import kml_gen
 from ..geoparams import geoparams
+from ..clean_quat import clean_quat
 
 class InsDataMgr(object):
     '''
@@ -561,9 +562,12 @@ class InsDataMgr(object):
             data_saved: a list of data that are saved.
         '''
         data_saved = []
-        for data in self.available:
+        for index, data in enumerate(self.available):
             if data not in self.__do_not_save:
-                # print('saving %s'% data)
+                #Clean quaternions before saving.
+                if(str(data) == "ref_att_quat"):
+                   print(self.__all[data].data)
+                   self.__all[data].data = clean_quat.clean(self.__all[data].data)
                 self.__all[data].save_to_file(data_dir)
                 data_saved.append(data)
         return data_saved

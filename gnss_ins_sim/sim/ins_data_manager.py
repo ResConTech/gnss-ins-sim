@@ -566,7 +566,6 @@ class InsDataMgr(object):
             if data not in self.__do_not_save:
                 #Clean quaternions before saving.
                 if(str(data) == "ref_att_quat"):
-                   print(self.__all[data].data)
                    self.__all[data].data = clean_quat.clean(self.__all[data].data)
                 self.__all[data].save_to_file(data_dir)
                 data_saved.append(data)

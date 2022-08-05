@@ -1,14 +1,11 @@
 """ config.py configuration parameters for the simulator"""
 
 import os
-
-
+from ANSI_color import *
 
 class config():
  
     def __init__(self):
-        WARNING = '\033[93m'
-        ENDC = '\033[0m'
         self.user = os.getlogin()
         
         imu_rc_path = "/home/{}/rescon/IMU_RC/sim_data".format(self.user)

@@ -3,10 +3,16 @@
 
 Running the sim is as simple as:
 ```bash
-$python3 run_sim.py
+$python3 run_sim.py <path_to_motion_profile.csv>
+```
+**Example:**
+```bash
+$python3 run_sim.py motion_profiles/quick_flight.csv
 ```
 
 This script will output sim data to various other rescon directories. **Make sure that all of the repositories are installed under /home/[user]/rescon/**
+
+You can create your own motion profiles by referring to the documentation provided by Aceinna below.
 
 **GNSS-INS-SIM** is an GNSS/INS simulation project, which generates reference trajectories, IMU sensor output, GPS output, odometer output and magnetometer output. Users choose/set up the sensor model, define the waypoints and provide algorithms, and **gnss-ins-sim** can generate required data for the algorithms, run the algorithms, plot simulation results, save simulations results, and generate a brief summary.
 

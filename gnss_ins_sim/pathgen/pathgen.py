@@ -378,7 +378,10 @@ def calc_true_sensor_output(pos_n, vel_b, att, c_nb, vel_dot_b, att_dot, ref_fra
         w_ie_n[0] = w_ie * cl
         w_ie_n[2] = -w_ie * sl
     else:
-        gravity = [0, 0, g]
+        #gravity = [0, 0, g]
+        #revisions by KevinR to use ECEF as ref_frame==1
+        w_ie_n=np.array([0,0,7.2921e-5])
+        gravity=-9.80665*pos_n/np.linalg.norm(pos_n) - np.cross(w_ie_n,np.cross(w_ie_n,pos_n))
 
     # Calculate rotation rate of b w.r.t n expressed in n.
     # Calculate rotation rate from Euler angle derivative using ZYX rot seq.
